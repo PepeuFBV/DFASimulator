@@ -29,4 +29,5 @@ public class Main {
         
         return new DFA(states, alphabet, transitions, initialState, acceptingStates);
     }
+    
 }

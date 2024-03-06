@@ -28,6 +28,46 @@ public class DFA {
         this.acceptingStates = acceptingStates;
     }
     
+    public static DFA generatingAutomaton() {
+        Scanner sc = new Scanner(System.in);
+        
+        //receiving and saving automaton's alphabet
+        System.out.println("Please insert the automaton alphabet (char separated by spaces, enter to finish): ");
+        Set<Character> alphabet = new HashSet<>();
+        while (sc.hasNext()) {
+            Character letter = sc.next().charAt(0);
+            alphabet.add(letter);
+        }
+        
+        //saving the states and all their transitions
+        //TODO: add missing transitions to a created (if needed) state called death
+        Set<String> states = new HashSet<>();
+        Map<String, Map<Character, String>> temporaryTransitions = new HashMap<>();
+        boolean newState = true;
+        while (newState) {
+            System.out.println("Insert the state: ");
+            String state = sc.next();
+            states.add(state);
+            System.out.print("How many transitions? ");
+            int transitionsNum = sc.nextInt();
+            for (int i = 0; i < transitionsNum; i++) {
+                Map<Character, String> tempMap = new HashMap<>();
+                System.out.println("Insert the character for the transition: ");
+                Character character = sc.next().charAt(0);
+                System.out.println("To which state it will go to: ");
+                String nextState = sc.next();
+                tempMap.put(character,nextState);
+                temporaryTransitions.put(state, tempMap);
+            }
+            System.out.println("\nMake a new state (Y/N)? ");
+            if (sc.next().equals("N") || sc.next().equals("n")) {
+                newState = false;
+            }
+        }
+        DFA generatedAutomaton = new DFA();
+        return generatedAutomaton;
+    }
+    
     /***
      * Checks if deterministic through iterating in Set to see if every state has a way to it
      * @return is AFD deterministic
