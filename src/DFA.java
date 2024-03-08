@@ -42,7 +42,7 @@ public class DFA {
         //saving the states and all their transitions
         //TODO: add missing transitions to a created (if needed) state called death
         Set<String> states = new HashSet<>();
-        Map<String, Map<Character, String>> temporaryTransitions = new HashMap<>();
+        Map<String, Map<Character, String>> transitions = new HashMap<>();
         boolean newState = true;
         while (newState) {
             System.out.println("Insert the state: ");
@@ -57,15 +57,21 @@ public class DFA {
                 System.out.println("To which state it will go to: ");
                 String nextState = sc.next();
                 tempMap.put(character,nextState);
-                temporaryTransitions.put(state, tempMap);
+                transitions.put(state, tempMap);
             }
             System.out.println("\nMake a new state (Y/N)? ");
             if (sc.next().equals("N") || sc.next().equals("n")) {
                 newState = false;
             }
         }
-        DFA generatedAutomaton = new DFA();
-        return generatedAutomaton;
+        
+        System.out.println("What is the initial state of the automaton? ");
+        String initialState = sc.next();
+        
+        
+        
+        
+        return new DFA(states, alphabet, transitions, initialState, //missing final states collection);
     }
     
     /***
