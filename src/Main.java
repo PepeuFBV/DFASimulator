@@ -17,6 +17,7 @@ public class Main {
                 if (!sc.next().toLowerCase().equals("n")) {
                     System.out.print("Enter a new test amount: ");
                     testAmount = sc.nextInt();
+                    i = 1;
                 }
             }
         }
