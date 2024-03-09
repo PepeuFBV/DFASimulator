@@ -3,8 +3,23 @@ import java.util.*;
 public class Main {
     
     public static void main(String[] args) {
-        DFA automaton = generatingTestAutomaton();
-        automaton.accept("baaaaaaaba");
+        Scanner sc = new Scanner(System.in);
+        DFA automaton = DFA.generatingAutomaton();
+        
+        System.out.println("How many tests do you want to do? ");
+        int testAmount = sc.nextInt(); sc.nextLine();
+        for (int i = 1; i <= testAmount; i++) {
+            System.out.print("\nEnter a string to test: ");
+            automaton.accept(sc.nextLine());
+            
+            if (i == testAmount) {
+                System.out.print("Do you want to test more? (Y/N): ");
+                if (!sc.next().toLowerCase().equals("n")) {
+                    System.out.print("Enter a new test amount: ");
+                    testAmount = sc.nextInt();
+                }
+            }
+        }
     }
     
     public static DFA generatingTestAutomaton() {
