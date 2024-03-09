@@ -4,12 +4,12 @@ A deterministic finite automaton (DFA) simulator written in Java. The simulator 
 ## How to use
 1. Compile the source code
 ```bash
-javac DFA.java
+javac Main.java
 ```
 
 2. Run the simulator
 ```bash
-java DFA
+java Main
 ```
 
 3. Input the DFA
